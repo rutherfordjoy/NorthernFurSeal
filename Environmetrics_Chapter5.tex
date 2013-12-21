@@ -19,13 +19,16 @@
 \usepackage{multirow}
 %\usepackage[nolists]{endfloat}
 
-\runninghead{R.~Joy, M.~G.~Dowd, B.~Battaile,  A.~W.~Trites and R.~Routledge}{This is a Running Title}
+\usepackage{color}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+
+\runninghead{R.~Joy et al. }{BHM for Animal Behaviour}
 
 \begin{document}
 
-\title{Hierarchical Error in Covariates Title}
+\title{Modelling Marine Animal Behaviour using a BHM Model}
 
-\author{R. Joy\affil{a}\corrauth\, M. G. Dowd\affil{b}, B. Battaile\affil{c},  A. W. Trites\affil{c},  and R. Routledge\affil{a}}
+\author{R. Joy\affil{a}\corrauth\, M. Dowd\affil{b}, B. Battaile\affil{c},  A. W. Trites\affil{c},  R. Routledge\affil{a}, P Lestenkoff}
 
 \corraddr{R. Joy, Department of Statistics and Actuarial Science, Simon Fraser University, 8888 University Drive, Burnaby, British Columbia, V5A 1S6, Canada. E-mail: rutherfordjoy@gmail.com}
 
@@ -35,6 +38,9 @@ Halifax, Nova Scotia, B3H 4R2, Canada
 \affilnum{c} Marine Mammal Research Unit, Fisheries Centre, University of British Columbia,2202 Main Mall, Vancouver, BC, Canada V6T 1Z4}
 
 \begin{abstract}
+
+\hilight{Will rewrite after we are done, to reflect new and more general emphasis} \\
+
 The population of northern fur seals ($Callorhinus$ $ursinus$) in the Pribilof Islands, Alaska has declined dramatically during the past 35 years. Arresting the decline of the species requires an understanding of their foraging behaviour at sea and is particularly important for those adult females whose foraging success is also linked to pup survival. We capture behaviour patterns of a set of tagged female northern fur sells by relating an autoregressive movement model to the numerical properties of the state space. The at-sea behaviour states were then matched, spatially and temporally, to a set of environmental variables, some of which were averages that represented the oceanic conditions over a large spatial area. The mismatch of scale between fur seal behaviour and the environmental variables was accounted for by modeling the errors associated with these covariates in a Bayesian hierarchical regression framework. Using this approach, we were able to link together northern fur seals that went to disparate regions of the eastern Bering Sea, with widely variable information about their underlying environmental fields into a single model. This application of a hierarchical model relates changes in identifiable behavioural states of the northern fur seal to changes in the Alaska commercial groundfish industry over a 24-hour foraging cycle. \end{abstract}
 
 \keywords{Northern fur seal; Mulitnomial; Bayesian hierarchical model, Error-in-covariates; \\Diel pattern; Walleye Pollock}
@@ -45,6 +51,7 @@ The population of northern fur seals ($Callorhinus$ $ursinus$) in the Pribilof I
 \section{Introduction}
 \label{s:intro}
 
+\hilight{MD will rewrite Intro}. \\ 
 
 The population of northern fur seals in the Pribilof Islands, Alaska has declined dramatically during the past 35 years, and continues to decline without any obvious reason yet identified (Towell et al. 2006). Arresting the decline of the species requires an understanding of the foraging strategies of the northern fur seal (Antonelis et al. 1997), particularly for those adult females whose foraging success is also linked to pup survival. The relationship between lactating northern fur seal movement and habitat is shaped by foraging success and the physiological constraints of feeding a stationary pup left on a beach at its natal rookery. Understanding the relationship between movement, behavior and environment is a critical part of understanding population processes (Bowler and Benton 2005% in Patterson et al. 2009, pg 1118
 ), and has been identified as one of the highest-level priorities by the northern fur seal conservation plan (NMFS 2007). 
@@ -92,8 +99,14 @@ While the primary focus of this paper is on the behaviour of northern fur sells 
 
 
 
-\section{Methods}
+\section{Data}
 \label{s:METHODS}
+
+\hilight{ general lead in statement should go here} 
+
+\hilight{ note that we introduce data set/case study first = concrete anchor} 
+
+
 \subsection{Instruments} \label{s:INSTRU} 
 During the 2005 and 2006 breeding seasons, 18 lactating northern fur seals were captured at Reef Rookery on St. Paul  Island (57.18$^\circ$ N, 170.27$^\circ$ W; 5 in 2005, 13 in 2006).
 
@@ -205,7 +218,7 @@ where $A$ is the amplitude of the wave, $\phi$ is the phase shift, $\alpha_1= A\
 
 
 
-\section{Environmental Model}
+\section{Methods}
 \label{s:EMODEL}
 
 Our goal was to see if the coupled environmental variables at each location could be used to provide insight into northern fur seal behavior. For this, we build the following hierarchical Bayesian model to examine the relationship between behaviour mode and at-sea habitat by matching the set of environmental variables in time and space to the observed behaviour model at the horizontal position of the fur seal's track. 
@@ -300,8 +313,17 @@ Due to uncertain large sample properties of posterior predictive $p$-values (for
 \label{s:KL}
 We constructed a simulation study using the Kullback-Leibler ($KL$) divergence statistic to examine the effect of sample size on model inference. The $KL$ divergence has been widely studied in statistical literature as a central index measuring qualitative similarity, or relative entropy, between two probability distributions, and is popular because it uses a likelihood ratio approach (Lee and Park 2006). We took 200 samples from the posterior distribution of the population-level models to use in generating 200 replicate datasets from each sample's posterior prediction. We then refit each of the 200 datasets using the MCMC model from which the data were generated. Posteriors of these replicate simulated datasets were gathered after burn-in, from a 10,000 long chain thinned to every 5$^{th}$ iteration. The $KL$ divergence for each of the original model's 12 population parameter posteriors $\bm{B}$ and the 200 simulated datasets and each of these model's parameter's posteriors were then calculated using R library ``$FlexMix$" (Leisch 2004).  
 
+
+
+
 \section{Results}
 \label{s:RESULTS}
+
+\hilight{The results have to be made to correspond tightly to the methods} 
+
+\hilight{It is good to refer back where possible explicitly  }
+
+
 Ten of the eighteen lactating females captured at Reef Rookery yielded complete data sets from which the foraging paths and behaviour information could be retrieved. One of these animals provided data from two complete foraging trips giving us 11 complete foraging tracks. The remaining eight animals had only partial data records with lost data due to a number of tag failures including water entering the housing, the speed paddle breaking off, fish vertebrae lodged between the speed paddle and housing, and battery failure. We present the results of the behaviour analysis of the 11 complete northern fur seal foraging tracks from Reef Rookery on St. Paul Island during the pupping seasons of 2005 and 2006. Foraging trips ranged in length from 5.5 days to 11.2 days, with a median of 7 days spent at sea. There were an average of 40 ARGOS fixes, and 404,400 archival data records per trip. 
 
 \begin{table}
@@ -500,6 +522,12 @@ Central to the Bayesian paradigm is the notion that as the data quantity and qua
 \section{Discussion}
 \label{s:DISCUSSION}
 
+\hilight{We'll leave the discussion for now}
+
+\hilight{ but as you go through make a running list of items and results and issues that you deem significant}. 
+
+\hilight{check for latest and most relevant references in animal movement and Bayesian}
+
 The hierarchical Bayesian framework used in this analysis has permitted us to significantly relate dive behaviours to the temporal and spatial fields through which lactating northern fur seals must forage in the eastern Bering Sea. We have established relationships between three distinct dive behaviours observed in lactating northern fur seals to the time of day and  measures of walleye pollock abundance around St. Paul Island, Alaska. Our analysis has shown that the interaction of time and prey abundance provides interesting insights into the organization of dive behaviours around a 24 hour, diel pattern. 
 
 \subsubsection{Northern Fur Seals exhibit a broad foraging range} % NORDSTROM'S PAPER 
@@ -537,6 +565,9 @@ It should be energetically advantageous to the northern fur seal to be able to c
 These eleven fur seal foraging trips generated some useful, basic insight into at-sea behavioural patterns across time and space. The Kullback-Leibler values of Figure (\ref{f:KLdiv2}) suggest that another 10 to 20 tracks would have generated useful further precision. We also anticipate that other oceanographic information on, for example, frontal eddies and filament locations, could provide valuable further insight into the association between fur seals and the Bering Sea environment. Within the hierarchical structure, it would be interesting to link the foraging behaviour characteristics of the maternal fur seal to her pup weight gains, as well as residency times and other life history characteristics that would contribute to our understanding of pup survival. 
 
 \section{Conclusions}
+
+\hilight{No need for separate conclusions. Add to Discussion}
+
 Our analysis did not attempt to answer the question of where in the ocean did the fur seals chose to forage relative to not forage. With only 11 tracks over an area with a radius of $>200 \,\,km$ (or area $>125,000$ $km^2$), this would have been too ambitious. Instead we answer the conditional question, ``Given that the fur seal swam through this location, can we predict its most likely behaviour based on a set of local environmental variables''. Using a hierarchical Bayesian approach, we were able to link together northern fur seals that went to disparate regions of the eastern Bering Sea, with widely  variable information about their underlying environmental fields into a single model that informed us about the expected behaviour of a population of maternal, female northern fur seals at Reef Rookery on St. Paul Island. Our analysis has focussed on three typical fur seal behaviours, and how these behaviours are associated with time of day, and a set of environmental data. The approach and analysis presented here is to use hierarchical Bayesian modelling to bring together coarse estimates of the at-sea environment, and the dynamics of fur seal behaviour through identification of variable-length segments of coherent behaviours. In this, we have successfully shown that northern fur seal behaviour actively forage more at night, and in areas where their preferred prey species, juvenile walleye pollock, appears to be more abundant. 
 
 
